@@ -1,0 +1,43 @@
+@mixin media-up-xs {
+  @media (min-width: 480) {
+    @content;
+  }
+}
+
+@mixin media-up-md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-up-lg {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin media-up-xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+
+/* custom breakpoints*/
+@mixin media-up($value) {
+  @media (min-width: $value) {
+    @content;
+  }
+}
+
+@mixin media-down($value) {
+  @media (max-width: $value) {
+    @content;
+  }
+}
+
+@mixin media-between($min, $max) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}

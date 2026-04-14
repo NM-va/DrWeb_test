@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "at-rule-no-deprecated": null,
+    "selector-class-pattern": null
+  }
+}

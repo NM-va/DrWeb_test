@@ -1,0 +1,210 @@
+// Variables
+// Follows Bootstrap-like grouping and naming, without !default.
+
+// Color system
+$white: #ffffff;
+$black: #000000;
+
+$gray-1000: #000000;
+$gray-870: #212121;
+$gray-800: #333333;
+$gray-600: #666666;
+$gray-500: #808080;
+$gray-350: #a6a6a6;
+$gray-300: #b3b3b3;
+$gray-250: #bfbfbf;
+$gray-200: #cccccc;
+$gray-150: #d9d9d9;
+$gray-100: #e5e5e5;
+$gray-50: #f2f2f2;
+$gray-26: #f8f8f8;
+$gray-0: #ffffff;
+
+$grays: (
+  "1000": $gray-1000,
+  "870": $gray-870,
+  "800": $gray-800,
+  "600": $gray-600,
+  "500": $gray-500,
+  "350": $gray-350,
+  "300": $gray-300,
+  "250": $gray-250,
+  "200": $gray-200,
+  "150": $gray-150,
+  "100": $gray-100,
+  "50": $gray-50,
+  "26": $gray-26,
+  "0": $gray-0
+);
+
+$green-1000: #69b42e;
+$green-100: #f0f7ea;
+
+$colors: (
+  "green-1000": $green-1000,
+  "green-100": $green-100,
+  "black": $black,
+  "white": $white
+);
+
+// Theme colors
+$primary: $green-1000;
+$secondary: $gray-600;
+$light: $gray-50;
+$dark: $gray-870;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "light": $light,
+  "dark": $dark
+);
+
+// Body and semantic colors
+$body-color: $gray-1000;
+$body-bg: $white;
+
+$text-color: $gray-1000;
+$text-secondary-color: $gray-600;
+$text-disabled-color: $gray-300;
+$text-placeholder-color: $gray-150;
+
+$icon-color: $gray-800;
+$icon-secondary-color: $gray-500;
+$icon-tertiary-color: $gray-250;
+$icon-disabled-color: $gray-100;
+
+$bg-primary: $white;
+$bg-main-dark: $gray-870;
+$bg-secondary: $gray-50;
+$bg-tertiary: $gray-26;
+$bg-quaternary: $green-100;
+$bg-disabled: $gray-350;
+
+$border-color: $gray-200;
+$active-color: $green-1000;
+
+// Spacing
+$spacer: 16px;
+
+$spacers: (
+  0: 0,
+  1: 4px,
+  2: 8px,
+  3: 12px,
+  4: 16px,
+  5: 20px,
+  6: 24px,
+  7: 32px,
+  8: 40px,
+  9: 48px,
+  10: 64px,
+  11: 88px,
+  12: 104px
+);
+
+$container-max-width: 1120px;
+$container-padding-x: 16px;
+
+// Typography
+$font-family-sans-serif: "Roboto", "Arial", sans-serif;
+$font-family-accent: "FreeSet Demi Bold", "Arial", sans-serif;
+$font-family-monospace: "Courier New", monospace;
+$font-family-base: $font-family-sans-serif;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-base: $font-weight-normal;
+
+$font-size-xs: 14px;
+$font-size-sm: 16px;
+$font-size-md: 18px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+$font-size-xxl: 32px;
+$font-size-display: 40px;
+
+$line-height-xs: 18px;
+$line-height-sm: 20px;
+$line-height-md: 22px;
+$line-height-lg: 24px;
+$line-height-xl: 26px;
+$line-height-xxl: 36px;
+$line-height-display: 42px;
+
+$font-size-base: $font-size-sm;
+$line-height-base: $line-height-sm;
+
+$btn-font-size-lg: 18px;
+$btn-line-height-lg: 18px;
+$btn-font-size-md: 16px;
+$btn-line-height-md: 16px;
+$btn-font-size-sm: 14px;
+$btn-line-height-sm: 14px;
+
+// Components
+$btn-height-lg: 48px;
+$btn-height-md: 40px;
+$btn-height-sm: 32px;
+
+$border-radius-md: 10px;
+
+// Backward compatibility aliases
+$font-weight-regular: $font-weight-normal;
+
+$color-green-1000: $green-1000;
+$color-green-100: $green-100;
+
+$color-gray-1000: $gray-1000;
+$color-gray-870: $gray-870;
+$color-gray-800: $gray-800;
+$color-gray-600: $gray-600;
+$color-gray-500: $gray-500;
+$color-gray-350: $gray-350;
+$color-gray-300: $gray-300;
+$color-gray-250: $gray-250;
+$color-gray-200: $gray-200;
+$color-gray-150: $gray-150;
+$color-gray-100: $gray-100;
+$color-gray-50: $gray-50;
+$color-gray-26: $gray-26;
+$color-gray-0: $gray-0;
+
+$color-text: $text-color;
+$color-text-secondary: $text-secondary-color;
+$color-text-disabled: $text-disabled-color;
+$color-text-placeholder: $text-placeholder-color;
+
+$color-icon: $icon-color;
+$color-icon-secondary: $icon-secondary-color;
+$color-icon-tertiary: $icon-tertiary-color;
+$color-icon-disabled: $icon-disabled-color;
+
+$color-border: $border-color;
+$color-active: $active-color;
+
+$container-padding: $container-padding-x;
+
+$space-4: 4px;
+$space-8: 8px;
+$space-12: 12px;
+$space-16: 16px;
+$space-20: 20px;
+$space-24: 24px;
+$space-32: 32px;
+$space-40: 40px;
+$space-48: 48px;
+$space-64: 64px;
+$space-88: 88px;
+$space-104: 104px;
+
+$font-size-button-l: $btn-font-size-lg;
+$line-height-button-l: $btn-line-height-lg;
+$font-size-button-m: $btn-font-size-md;
+$line-height-button-m: $btn-line-height-md;
+$font-size-button-s: $btn-font-size-sm;
+$line-height-button-s: $btn-line-height-sm;
+
+
+$radius-md: $border-radius-md;

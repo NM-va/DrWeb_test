@@ -1,0 +1,20 @@
+{
+  "name": "drweb-test",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint:styles": "stylelint \"src/scss/**/*.scss\"",
+    "lint:styles:fix": "stylelint \"src/scss/**/*.scss\" --fix"
+  },
+  "devDependencies": {
+    "modern-normalize": "^3.0.1",
+    "sass": "latest",
+    "vite": "^6.0.0",
+    "stylelint": "^17.7.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-scss": "^7.0.0"
+  }
+}
