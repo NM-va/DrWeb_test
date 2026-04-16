@@ -148,7 +148,11 @@
                 />
                 <label class="form-banner__legal" for="form-banner-consent">
                   Я даю согласие на обработку моих персональных данных в соответствии с
-                  <a class="form-banner__link" href="#" target="_blank" rel="noopener noreferrer"
+                  <a
+                    class="form-banner__link"
+                    href="https://company.drweb.ru/policy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     >Политикой конфиденциальности</a
                   >.
                 </label>
@@ -156,7 +160,16 @@
               </div>
               <button class="form-banner__submit" type="submit" disabled>Зарегистрироваться</button>
             </form>
-            <div class="contacts-banner"></div>
+            <div class="contacts-banner" aria-label="Контакты">
+              <div class="contacts-banner__content">
+                <h3 class="contacts-banner__title">Остались вопросы?</h3>
+                <p class="contacts-banner__text">
+                  Напишите нам
+                  <a class="contacts-banner__email" href="mailto:marketing@drweb.com">marketing@drweb.com</a>
+                </p>
+              </div>
+              <img class="contacts-banner__icon" src="assets/img/contacts.webp" alt="" aria-hidden="true" />
+            </div>
           </div>
         </section>
       </main>

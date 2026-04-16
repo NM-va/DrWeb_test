@@ -23,8 +23,9 @@ $gray-300:      #b3b3b3; // gray 300    disabled-text         Неактивны
 $gray-350:      #a6a6a6; // gray 350    disabled-bg           Неактивный цвет фона элементов
 $gray-500:      #808080; // gray 500    secondary-icon        Дополнительный цвет иконок
 $gray-600:      #666666; // gray 600    secondary-text        Дополнительный цвет текста
+$gray-650:      #575757; // gray 650    dark-muted            Тёмно-серый (вторичный на тёмном)
 $gray-800:      #333333; // gray 800    icon                  Основной цвет иконок
-$gray-870:      #272121; // gray 870    bg                    Основной цвет фона (тёмные секции)
+$gray-870:      #212121; // gray 870    bg                    Основной цвет фона (тёмные секции)
 $gray-1000:     #000000; // gray 1000   text                  Основной цвет текста
 
 
@@ -87,6 +88,8 @@ $icon-bg-hover:             $white-rgb-14;
 // Ссылки на тёмном
 $link-color:                $gray-0;
 $link-hover-color:          $gray-250;         // tertiary-icon
+$link-accent-color:         $green-neon;
+$link-hover-accent-color:   $green-100;
 
 // кнопка-ссылка на баннере
 $link-btn-border-color:     $green-100;
@@ -117,7 +120,7 @@ $input-placeholder-color:   $gray-150;    // placeholder-text
 
 $label-color:               $gray-600;    // secondary-text
 $form-hint-color:           $gray-350;    // disabled-bg
-$form-legal-color:          $gray-870;
+$form-legal-color:          $gray-1000;
 $form-link-color:           $gray-1000;
 $form-link-hover-color:     $gray-800;    // icon
 $form-required-color:       $gray-300;    // disabled-text
@@ -167,6 +170,7 @@ $gradient-pill-border: linear-gradient(
 
 $gradient-pill-mask: linear-gradient($white 0 0) content-box, linear-gradient($white 0 0);
 
+$gradient-card: radial-gradient(100% 100% at 100% 0%, $gray-650 0%, $gray-870 100%);
 
 // ============================================
 // 8. ТИПОГРАФИКА — ШРИФТЫ И БАЗОВЫЕ РАЗМЕРЫ
@@ -319,7 +323,8 @@ $container-padding-x:   1rem;
 
 $border-width:          1px;
 $border-radius-sm:      5px;
-$border-radius:         10px;
+$border-radius-md:      10px;
+$border-radius-xl:      15px;
 
 $btn-height-sm:         32px;
 $btn-height-md:         40px;
@@ -328,8 +333,6 @@ $btn-height-lg:         48px;
 // ============================================
 // 14. ФОРМА — РАЗМЕРЫ И ОТСТУПЫ
 // ============================================
-
-$form-max-width:            560px;
 $form-border-radius:        10px;
 $form-padding-y:            $space-24;
 $form-padding-x:            $space-24;
@@ -343,8 +346,7 @@ $form-title-margin-bottom:  $space-16;
 $input-border-radius:       $border-radius-sm;
 $input-min-height:          $btn-height-md;
 
-$form-submit-min-height:    50px;
-$form-submit-border-radius: 6px;
+$form-submit-border-radius: $border-radius-sm;
 
 // ============================================
 // 15. КОМПОНЕНТЫ — МОДАЛЬНЫЕ ОКНА
@@ -360,8 +362,7 @@ $modal-secondary-bg:        $gray-0;
 $modal-secondary-border:    $green;
 $modal-secondary-color:     $gray-1000;
 
-$modal-width:               26.25rem; // 420px
-$modal-radius:              12px;
+$modal-radius:              $border-radius-xl;
 $modal-padding:             $space-24;
 $modal-padding-lg:          $space-64;
 $modal-gap:                 $space-16;
@@ -373,7 +374,15 @@ $modal-action-height:       2.5rem; // 40px
 $modal-z-index:             50;
 
 // ============================================
-// 16. ПРОЧИЕ КОЭФФИЦИЕНТЫ
+// 16. КОМПОНЕНТЫ — CONTACTS BANNER
+// ============================================
+$card-banner-bg:             $gradient-card;
+$card-banner-radius:         $border-radius-xl;
+$card-banner-padding-y:      $space-24;
+$card-banner-padding-x:      $space-32;
+
+// ============================================
+// 17. ПРОЧИЕ КОЭФФИЦИЕНТЫ
 // ============================================
 $clamp-val:         4vw;
 $opacity-disabled:  0.4;
