@@ -1,0 +1,104 @@
+@use "./variables" as vars;
+@use "./mixins" as mix;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: vars.$modal-z-index;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: vars.$space-16;
+  background-color: vars.$modal-overlay-bg;
+  backdrop-filter: blur(8px);
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: vars.$modal-width;
+  padding: vars.$modal-padding;
+  border-radius: vars.$modal-radius;
+  background-color: vars.$modal-bg;
+  color: vars.$modal-text;
+  text-align: center;
+  width: 100%;
+  max-width: 568px;
+}
+
+.modal__close {
+  position: absolute;
+  top: vars.$space-24;
+  right: vars.$space-12;
+  width: vars.$space-24;
+  height: vars.$space-24;
+  border: 0;
+  border-radius: vars.$border-radius-sm;
+  background: none;
+  color: vars.$modal-close-color;
+  font-size: vars.$font-size-xl;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  color: vars.$modal-close-hover-color;
+}
+
+.modal__title {
+  margin: vars.$space-16 0 vars.$space-12;
+  font-size: vars.$modal-title-size;
+  font-weight: vars.$font-weight-semibold;
+  line-height: vars.$modal-title-line-height;
+}
+
+.modal__text {
+  margin: 0 0 vars.$space-24;
+  font-size: vars.$modal-text-size;
+  line-height: vars.$modal-text-line-height;
+}
+
+.modal__actions {
+  display: grid;
+  gap: vars.$space-12;
+}
+
+.modal__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: vars.$modal-action-height;
+  border: vars.$border-width solid transparent;
+  border-radius: vars.$border-radius-sm;
+  padding: vars.$space-8 vars.$space-16;
+  font-size: vars.$font-size-md;
+  line-height: vars.$line-height-btn-md;
+  cursor: pointer;
+}
+
+.modal__action--primary {
+  border-color: vars.$modal-primary-bg;
+  background-color: vars.$modal-primary-bg;
+  color: vars.$modal-primary-color;
+}
+
+.modal__action--secondary {
+  border-color: vars.$modal-secondary-border;
+  background-color: vars.$modal-secondary-bg;
+  color: vars.$modal-secondary-color;
+}
+
+@include mix.media-up-md {
+  .modal__dialog {
+    padding: vars.$modal-padding-lg;
+  }
+
+  .modal__title {
+    font-size: vars.$h2-font-size;
+    line-height: vars.$h2-line-height;
+  }
+}

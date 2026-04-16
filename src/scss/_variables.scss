@@ -1,210 +1,381 @@
-// Variables
-// Follows Bootstrap-like grouping and naming, without !default.
+@use "sass:map";
 
-// Color system
-$white: #ffffff;
-$black: #000000;
+// ============================================
+// 0. ОПЦИИ
+// ============================================
+$enable-rounded:     true;
+$enable-shadows:     false;
+$enable-transitions: true;
 
-$gray-1000: #000000;
-$gray-870: #212121;
-$gray-800: #333333;
-$gray-600: #666666;
-$gray-500: #808080;
-$gray-350: #a6a6a6;
-$gray-300: #b3b3b3;
-$gray-250: #bfbfbf;
-$gray-200: #cccccc;
-$gray-150: #d9d9d9;
-$gray-100: #e5e5e5;
-$gray-50: #f2f2f2;
-$gray-26: #f8f8f8;
-$gray-0: #ffffff;
+// ============================================
+// 1. БАЗОВАЯ ПАЛИТРА — СЕРЫЕ
+// Имена совпадают с дизайн-токенами из макета
+// ============================================
+$gray-0:        #ffffff; // gray 0      bg / text (dark)      Основной цвет фона / текста (dark)
+$gray-26:       #fafaf3; // gray 26     tertiary-bg           Второй дополнительный цвет фона
+$gray-40:       #f8f8f8; // gray 40     light-neutral-bg      Светлый нейтральный фон
+$gray-50:       #f2f2f2; // gray 50     secondary-bg          Дополнительный цвет фона
+$gray-100:      #e5e5e5; // gray 100    disabled-icon         Неактивный цвет иконок
+$gray-150:      #d9d9d9; // gray 150    placeholder-text      Текст-заполнитель
+$gray-200:      #cccccc; // gray 200    border                Цвет бордера
+$gray-250:      #bfbfbf; // gray 250    tertiary-icon         Второй дополнительный цвет иконок
+$gray-300:      #b3b3b3; // gray 300    disabled-text         Неактивный цвет текста
+$gray-350:      #a6a6a6; // gray 350    disabled-bg           Неактивный цвет фона элементов
+$gray-500:      #808080; // gray 500    secondary-icon        Дополнительный цвет иконок
+$gray-600:      #666666; // gray 600    secondary-text        Дополнительный цвет текста
+$gray-800:      #333333; // gray 800    icon                  Основной цвет иконок
+$gray-870:      #272121; // gray 870    bg                    Основной цвет фона (тёмные секции)
+$gray-1000:     #000000; // gray 1000   text                  Основной цвет текста
 
-$grays: (
-  "1000": $gray-1000,
-  "870": $gray-870,
-  "800": $gray-800,
-  "600": $gray-600,
-  "500": $gray-500,
-  "350": $gray-350,
-  "300": $gray-300,
-  "250": $gray-250,
-  "200": $gray-200,
-  "150": $gray-150,
-  "100": $gray-100,
-  "50": $gray-50,
-  "26": $gray-26,
-  "0": $gray-0
+
+// Короткие алиасы
+$white:         $gray-0;
+$black:         $gray-1000;
+
+// ============================================
+// 2. АКЦЕНТНЫЕ И СИСТЕМНЫЕ ЦВЕТА
+// ============================================
+$green:    #69b42e;
+$green-neon:    #5fd900;
+$green-100:     #edf6e6;  // мягкий зелёный фон (подложки, теги)
+$green-50:      #f0f7ea;  // совсем светлый акцентный фон
+$red:           #d32f2f;
+
+
+// ============================================
+// 3. RGB-КОМПОНЕНТЫ
+// Использование: rgba(#{$foo-rgb}, 0.5)
+// ============================================
+$white-rgb-8: rgb(255 255 255 / 8%);
+$white-rgb-14: rgb(255 255 255 / 14%);
+$white-rgb-20: rgb(255 255 255 / 20%);
+$white-rgb-84: rgb(255 255 255 / 84%);
+$white-rgb-88: rgb(255 255 255 / 88%);
+$white-rgb-92: rgb(255 255 255 / 92%);
+$black-rgb-60: rgb(0 0 0 / 60%);
+$transparent: rgb(0 0 0 / 0%);
+$green-rgb-6: rgb(95 217 0 / 6%);
+$green-rgb-12: rgb(95 217 0 / 12%);
+$green-rgb-22: rgb(95 217 0 / 22%);
+
+
+// ============================================
+// 4. СЕМАНТИКА — ТЁМНАЯ ТЕМА
+// Фон: $gray-1000 | Текст: $gray-0 | Акцент: $green
+// Используется: баннер, хедер, футер, матрица
+// ============================================
+$body-bg:                   $gray-1000;
+$body-color:                $gray-0;
+
+// Текст
+$text-emphasis:             $gray-0;           // заголовки, акцентный текст
+$text-muted:                $gray-500;         // secondary-icon / вторичный текст на тёмном     
+$text-accent:               $green-neon;
+
+// Иконки
+$icon-color:                $gray-800;         // icon — основной цвет иконок
+$icon-color-secondary:      $gray-500;         // secondary-icon
+
+// Бордер
+$border-color:              $gray-800;         // разделители на тёмном фоне
+$border-color-secondary:    $gray-0;         
+
+// Иконки-кнопки (полупрозрачные, напр. соцсети в футере)
+$icon-bg:                   $white-rgb-8;
+$icon-bg-hover:             $white-rgb-14;
+
+// Ссылки на тёмном
+$link-color:                $gray-0;
+$link-hover-color:          $gray-250;         // tertiary-icon
+
+// кнопка-ссылка на баннере
+$link-btn-border-color:     $green-100;
+$link-btn-bg-hover:         $green-rgb-12;
+
+// ============================================
+// 5. СЕМАНТИКА — СВЕТЛАЯ ТЕМА
+// Фон: $gray-0 | Текст: $gray-1000 | Muted: $gray-300
+// Используется: секции с белым фоном, карточки
+// ============================================
+$surface-bg:            $gray-0;
+$surface-color:         $gray-1000;
+$surface-color-muted:   $gray-300;         // disabled-text, #b3b3b3
+$accent-bg:             $green-neon;
+$accent-border-color:   $green-neon;
+
+
+// ============================================
+// 6. КОМПОНЕНТЫ — ФОРМА (карточка на светлом фоне)
+// ============================================
+$form-bg:                   $gray-0;
+$form-border-color:         $gray-200;     // border
+
+$input-bg:                  $gray-0;
+$input-border-color:        $gray-200;     // border, #cccccc
+$input-color:               $gray-1000;
+$input-placeholder-color:   $gray-150;    // placeholder-text
+
+$label-color:               $gray-600;    // secondary-text
+$form-hint-color:           $gray-350;    // disabled-bg
+$form-legal-color:          $gray-870;
+$form-link-color:           $gray-1000;
+$form-link-hover-color:     $gray-800;    // icon
+$form-required-color:       $gray-300;    // disabled-text
+
+$form-submit-bg:            $gray-40;     
+$form-submit-color:         $gray-600;    // secondary-text
+$form-submit-bg-active:     $green;
+$form-submit-color-active:  $gray-0;
+
+$form-error-text:           $red;
+$form-error-border:         $red;
+$form-email-alert-bg:       $gray-40;
+$form-email-alert-border:   $red;
+$form-focus-ring:           $green;
+
+// ============================================
+// 7. ГРАДИЕНТЫ (баннер)
+// ============================================
+$gradient-glow: radial-gradient(
+  ellipse 85% 70% at 50% 36%,
+  green-rgb-22 0%,
+  green-rgb-6 42%,
+  transparent 68%
 );
 
-$green-1000: #69b42e;
-$green-100: #f0f7ea;
-
-$colors: (
-  "green-1000": $green-1000,
-  "green-100": $green-100,
-  "black": $black,
-  "white": $white
+$gradient-banner-fade: linear-gradient(
+  180deg,
+  $transparent 78%,
+  $gray-870 100%
 );
 
-// Theme colors
-$primary: $green-1000;
-$secondary: $gray-600;
-$light: $gray-50;
-$dark: $gray-870;
-
-$theme-colors: (
-  "primary": $primary,
-  "secondary": $secondary,
-  "light": $light,
-  "dark": $dark
+$gradient-banner-vignette: radial-gradient(
+  57.86% 58.15% at 50% 50%,
+  $gray-1000 31.95%,
+  $transparent 100%
 );
 
-// Body and semantic colors
-$body-color: $gray-1000;
-$body-bg: $white;
+$gradient-pill-fill:
+  linear-gradient(0deg, $white-rgb-14, $white-rgb-14),
+  linear-gradient(101.59deg, $white-rgb-20 12.49%, $transparent 58.51%);
 
-$text-color: $gray-1000;
-$text-secondary-color: $gray-600;
-$text-disabled-color: $gray-300;
-$text-placeholder-color: $gray-150;
+$gradient-pill-border: linear-gradient(
+  160deg,
+  $white-rgb-84 -8.44%,
+  $transparent 83.93%
+);
 
-$icon-color: $gray-800;
-$icon-secondary-color: $gray-500;
-$icon-tertiary-color: $gray-250;
-$icon-disabled-color: $gray-100;
+$gradient-pill-mask: linear-gradient($white 0 0) content-box, linear-gradient($white 0 0);
 
-$bg-primary: $white;
-$bg-main-dark: $gray-870;
-$bg-secondary: $gray-50;
-$bg-tertiary: $gray-26;
-$bg-quaternary: $green-100;
-$bg-disabled: $gray-350;
 
-$border-color: $gray-200;
-$active-color: $green-1000;
+// ============================================
+// 8. ТИПОГРАФИКА — ШРИФТЫ И БАЗОВЫЕ РАЗМЕРЫ
+// ============================================
+$font-size-root:        16px;
+$font-family-base:      "Roboto", "Arial", sans-serif;
+$font-family-accent:    "FreeSet Demi Bold", "Arial", sans-serif;
 
-// Spacing
-$spacer: 16px;
+// Базовые размеры (используются в body / utility-классах)
+$font-size-base:        1rem;           // 16px — body
+$font-size-xs:          0.75rem;        // 12px — caption
+$font-size-sm:          0.875rem;       // 14px — btn-s / мелкий текст
+$font-size-md:          1rem;           // 16px — btn-m / body
+$font-size-lg:          1.125rem;       // 18px — btn-l
+$font-size-xl:          1.5rem;         // 24px — h3 desktop / h1 mobile
+$font-size-xxl:         2rem;           // 32px — h2 desktop
+$font-size-xxxl:        2.5rem;         // 40px — h1 desktop
+
+$font-weight-regular:   400;
+$font-weight-medium:    500;
+$font-weight-semibold:  600;
+
+// ============================================
+// 9. ТИПОГРАФИКА — ЗАГОЛОВКИ (Desktop)
+// ============================================
+
+// h1 · FreeSet Demi Bold · 40px / lh 42px / W600
+$h1-font-family:        $font-family-accent;
+$h1-font-size:          2.5rem;         // 40px
+$h1-line-height:        1.05;           // 42 / 40
+$h1-font-weight:        $font-weight-semibold;
+
+// h2 · FreeSet Demi Bold · 32px / lh 36px / W600
+$h2-font-family:        $font-family-accent;
+$h2-font-size:          2rem;           // 32px
+$h2-line-height:        1.125;          // 36 / 32
+$h2-font-weight:        $font-weight-semibold;
+
+// h3 · Roboto Medium · 24px / lh 38px / W500
+$h3-font-family:        $font-family-base;
+$h3-font-size:          1.5rem;         // 24px
+$h3-line-height:        1.583;          // 38 / 24
+$h3-font-weight:        $font-weight-medium;
+
+// body · Roboto Regular · 16px / lh 24px / W400
+$body-font-size:        1rem;           // 16px
+$body-line-height:      1.5;            // 24 / 16
+$body-font-weight:      $font-weight-regular;
+
+$body-line-height-sm:   1.25rem;           
+$body-line-height-md:   1.875rem;           
+
+// caption · Roboto Regular · 12px / lh 18px / W400
+$caption-font-size:     0.75rem;        // 12px
+$caption-line-height:   1.5;            // 18 / 12
+$caption-font-weight:   $font-weight-regular;
+
+// ============================================
+// 10. ТИПОГРАФИКА — ЗАГОЛОВКИ (Mobile)
+// ============================================
+
+// h1 mobile · FreeSet Demi Bold · 24px / lh 26px / W600
+$h1-font-size-mobile:       1.5rem;     // 24px
+$h1-line-height-mobile:     1.083;      // 26 / 24
+
+// h2 mobile · FreeSet Demi Bold · 20px / lh 22px / W600
+$h2-font-size-mobile:       1.25rem;    // 20px
+$h2-line-height-mobile:     1.1;        // 22 / 20
+
+// h3 mobile · Roboto Medium · 16px / lh 22px / W500
+$h3-font-size-mobile:       1rem;       // 16px
+$h3-line-height-mobile:     1.375;      // 22 / 16
+
+// body mobile · Roboto Regular · 16px / lh 20px / W400
+$body-line-height-mobile:   1.25;       // 20 / 16
+
+// caption mobile · Roboto Regular · 12px / lh 14px / W400
+$caption-line-height-mobile: 1.167;     // 14 / 12
+
+// ============================================
+// 11. ТИПОГРАФИКА — КНОПКИ И ССЫЛКИ
+// ============================================
+
+// Кнопка L · Roboto · 18px / lh 18px / W400
+$font-size-btn-lg:      1.125rem;       // 18px
+$line-height-btn-lg:    1;
+
+// Кнопка M · Roboto · 16px / lh 16px / W400
+$font-size-btn-md:      1rem;           // 16px
+$line-height-btn-md:    1;
+
+// Кнопка S · Roboto · 14px / lh 14px / W400
+$font-size-btn-sm:      0.875rem;       // 14px
+$line-height-btn-sm:    1;
+
+// Ссылки (Link) · Roboto Regular · 16px / lh 16px / W400
+$font-size-link:        1rem;           // 16px
+$line-height-link:      1;
+$font-weight-link:      $font-weight-regular;
+
+// ============================================
+// 12. ОТСТУПЫ
+// Модульная сетка 4px
+// ============================================
+
+$spacer: 0.25rem; // 4px — базовый модуль
 
 $spacers: (
-  0: 0,
-  1: 4px,
-  2: 8px,
-  3: 12px,
-  4: 16px,
-  5: 20px,
-  6: 24px,
-  7: 32px,
-  8: 40px,
-  9: 48px,
-  10: 64px,
-  11: 88px,
-  12: 104px
+  1:  $spacer,          //  4px
+  2:  $spacer * 2,      //  8px
+  3:  $spacer * 3,      // 12px
+  4:  $spacer * 4,      // 16px
+  5:  $spacer * 5,      // 20px
+  6:  $spacer * 6,      // 24px
+  8:  $spacer * 8,      // 32px
+  10: $spacer * 10,     // 40px
+  12: $spacer * 12,     // 48px
+  16: $spacer * 16,     // 64px
+  22: $spacer * 22,     // 88px
+  26: $spacer * 26,     // 104px
 );
 
-$container-max-width: 1120px;
-$container-padding-x: 16px;
+// Именованные алиасы (удобны в компонентах)
+$space-4:    map.get($spacers, 1);
+$space-8:    map.get($spacers, 2);
+$space-12:   map.get($spacers, 3);
+$space-16:   map.get($spacers, 4);
+$space-20:   map.get($spacers, 5);
+$space-24:   map.get($spacers, 6);
+$space-32:   map.get($spacers, 8);
+$space-40:   map.get($spacers, 10);
+$space-48:   map.get($spacers, 12);
+$space-64:   map.get($spacers, 16);
+$space-88:   map.get($spacers, 22);
+$space-104:  map.get($spacers, 26);
 
-// Typography
-$font-family-sans-serif: "Roboto", "Arial", sans-serif;
-$font-family-accent: "FreeSet Demi Bold", "Arial", sans-serif;
-$font-family-monospace: "Courier New", monospace;
-$font-family-base: $font-family-sans-serif;
+$btn-padding-y:     $space-8;
+$btn-padding-x:     $space-24;
+$input-padding-y:   $space-12;
+$input-padding-x:   $space-16;
+$card-padding-y:    $space-32;
+$card-padding-x:    $space-24;
 
-$font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-$font-weight-base: $font-weight-normal;
+// ============================================
+// 13. СЕТКА И РАЗМЕРЫ
+// ============================================
 
-$font-size-xs: 14px;
-$font-size-sm: 16px;
-$font-size-md: 18px;
-$font-size-lg: 20px;
-$font-size-xl: 24px;
-$font-size-xxl: 32px;
-$font-size-display: 40px;
+$container-max-width:   70rem;
+$container-padding-x:   1rem;
 
-$line-height-xs: 18px;
-$line-height-sm: 20px;
-$line-height-md: 22px;
-$line-height-lg: 24px;
-$line-height-xl: 26px;
-$line-height-xxl: 36px;
-$line-height-display: 42px;
+$border-width:          1px;
+$border-radius-sm:      5px;
+$border-radius:         10px;
 
-$font-size-base: $font-size-sm;
-$line-height-base: $line-height-sm;
+$btn-height-sm:         32px;
+$btn-height-md:         40px;
+$btn-height-lg:         48px;
 
-$btn-font-size-lg: 18px;
-$btn-line-height-lg: 18px;
-$btn-font-size-md: 16px;
-$btn-line-height-md: 16px;
-$btn-font-size-sm: 14px;
-$btn-line-height-sm: 14px;
+// ============================================
+// 14. ФОРМА — РАЗМЕРЫ И ОТСТУПЫ
+// ============================================
 
-// Components
-$btn-height-lg: 48px;
-$btn-height-md: 40px;
-$btn-height-sm: 32px;
+$form-max-width:            560px;
+$form-border-radius:        10px;
+$form-padding-y:            $space-24;
+$form-padding-x:            $space-24;
+$form-padding-lg-y:         $space-48;
+$form-padding-lg-x:         $space-64;
+$form-gap-stack:            $space-24;
+$form-gap-fields:           $space-20;
+$form-gap-label:            $space-8;
+$form-title-margin-bottom:  $space-16;
 
-$border-radius-md: 10px;
+$input-border-radius:       $border-radius-sm;
+$input-min-height:          $btn-height-md;
 
-// Backward compatibility aliases
-$font-weight-regular: $font-weight-normal;
+$form-submit-min-height:    50px;
+$form-submit-border-radius: 6px;
 
-$color-green-1000: $green-1000;
-$color-green-100: $green-100;
+// ============================================
+// 15. КОМПОНЕНТЫ — МОДАЛЬНЫЕ ОКНА
+// ============================================
+$modal-overlay-bg:          $black-rgb-60;
+$modal-bg:                  $gray-0;
+$modal-text:                $gray-1000;
+$modal-close-color:         $gray-250;
+$modal-close-hover-color:   $gray-600;
+$modal-primary-bg:          $green;
+$modal-primary-color:       $gray-0;
+$modal-secondary-bg:        $gray-0;
+$modal-secondary-border:    $green;
+$modal-secondary-color:     $gray-1000;
 
-$color-gray-1000: $gray-1000;
-$color-gray-870: $gray-870;
-$color-gray-800: $gray-800;
-$color-gray-600: $gray-600;
-$color-gray-500: $gray-500;
-$color-gray-350: $gray-350;
-$color-gray-300: $gray-300;
-$color-gray-250: $gray-250;
-$color-gray-200: $gray-200;
-$color-gray-150: $gray-150;
-$color-gray-100: $gray-100;
-$color-gray-50: $gray-50;
-$color-gray-26: $gray-26;
-$color-gray-0: $gray-0;
+$modal-width:               26.25rem; // 420px
+$modal-radius:              12px;
+$modal-padding:             $space-24;
+$modal-padding-lg:          $space-64;
+$modal-gap:                 $space-16;
+$modal-title-size:          $h3-font-size;
+$modal-title-line-height:   $body-line-height-md;
+$modal-text-size:           $font-size-lg;
+$modal-text-line-height:    $body-line-height-sm;
+$modal-action-height:       2.5rem; // 40px
+$modal-z-index:             50;
 
-$color-text: $text-color;
-$color-text-secondary: $text-secondary-color;
-$color-text-disabled: $text-disabled-color;
-$color-text-placeholder: $text-placeholder-color;
-
-$color-icon: $icon-color;
-$color-icon-secondary: $icon-secondary-color;
-$color-icon-tertiary: $icon-tertiary-color;
-$color-icon-disabled: $icon-disabled-color;
-
-$color-border: $border-color;
-$color-active: $active-color;
-
-$container-padding: $container-padding-x;
-
-$space-4: 4px;
-$space-8: 8px;
-$space-12: 12px;
-$space-16: 16px;
-$space-20: 20px;
-$space-24: 24px;
-$space-32: 32px;
-$space-40: 40px;
-$space-48: 48px;
-$space-64: 64px;
-$space-88: 88px;
-$space-104: 104px;
-
-$font-size-button-l: $btn-font-size-lg;
-$line-height-button-l: $btn-line-height-lg;
-$font-size-button-m: $btn-font-size-md;
-$line-height-button-m: $btn-line-height-md;
-$font-size-button-s: $btn-font-size-sm;
-$line-height-button-s: $btn-line-height-sm;
-
-
-$radius-md: $border-radius-md;
+// ============================================
+// 16. ПРОЧИЕ КОЭФФИЦИЕНТЫ
+// ============================================
+$clamp-val:         4vw;
+$opacity-disabled:  0.4;
+$opacity-hover:     0.8;
+$opacity-overlay:   0.6;

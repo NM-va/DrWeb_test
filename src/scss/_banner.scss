@@ -1,0 +1,175 @@
+@use "./variables" as vars;
+@use "./mixins" as mix;
+
+.banner-section {
+  position: relative;
+  padding-block: vars.$space-48 vars.$space-64;
+  overflow: hidden;
+  color: vars.$body-color;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: vars.$body-bg;
+  }
+
+  &__canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__glow {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: vars.$gradient-glow;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background-image:
+      vars.$gradient-banner-fade,
+      vars.$gradient-banner-vignette;
+  }
+
+  .container {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+.content-banner {
+  display: flex;
+  max-width: 720px;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+  margin-bottom: vars.$space-40;
+
+  &__datetime {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: vars.$space-12;
+    margin-bottom: vars.$space-24;
+    width: 100%;
+    max-width: 486px;
+  }
+
+  &__date,
+  &__time {
+    padding: vars.$space-12 vars.$space-24;
+    border-radius: 999px;
+    background: vars.$gradient-pill-fill;
+    font-size: vars.$font-size-lg;
+    line-height: vars.$body-line-height;
+    color: vars.$gray-0;
+    width: 100%;
+    position: relative;
+
+    @include mix.media-up-xs {
+      max-width: 237px;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: 999px;
+      box-sizing: border-box;
+      background: vars.$gradient-pill-border;
+      -webkit-mask:
+        vars.$gradient-pill-mask content-box,
+        vars.$gradient-pill-mask;
+      -webkit-mask-composite: xor;
+      mask:
+        vars.$gradient-pill-mask content-box,
+        vars.$gradient-pill-mask;
+      mask-composite: exclude;
+      pointer-events: none;
+      border-radius: 999px;
+    }
+  }
+
+  &__address {
+    margin-bottom: vars.$space-24;
+    max-width: 486px;
+    font-size: vars.$font-size-md;
+    line-height: vars.$body-line-height;
+    color: vars.$body-color;
+
+    @include mix.media-up-md {
+      padding: 0 vars.$btn-padding-x;
+    }
+  }
+
+  &__download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: vars.$space-8;
+    padding: vars.$btn-padding-y vars.$btn-padding-x;
+    border: 2px solid vars.$link-btn-border-color;
+    border-radius: vars.$border-radius-sm;
+    background: none;
+    font-size: vars.$font-size-lg;
+    font-weight: vars.$font-weight-medium;
+    line-height: vars.$body-line-height;
+    color: vars.$body-color;
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+
+    &:hover {
+      background-color: vars.$link-btn-bg-hover;
+    }
+  }
+
+  &__download-icon {
+    flex-shrink: 0;
+    margin-left: vars.$space-8;
+    display: block;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.logo-banner {
+  margin-bottom: vars.$space-32;
+}
+
+.logo-banner img {
+  margin-inline: auto;
+}
+
+.text-banner {
+  margin-bottom: vars.$space-32;
+  transform: rotate(-2deg);
+}
+
+.title-banner {
+  &__title {
+    margin: 0 0 vars.$space-16;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: vars.$font-weight-semibold;
+    line-height: 1.15;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: vars.$font-size-md;
+    line-height: vars.$body-line-height;
+    color: vars.$body-color;
+  }
+}
