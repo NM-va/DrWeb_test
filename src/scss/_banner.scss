@@ -23,6 +23,16 @@
     inset: 0;
     z-index: 0;
     background-color: vars.$body-bg;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: vars.$banner-hue-overlay-bg;
+      mix-blend-mode: hue;
+    }
   }
 
   &__canvas {
@@ -36,9 +46,12 @@
   &__glow {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 3;
+    display: block;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    background: vars.$gradient-glow;
+    opacity: 0.85;
   }
 
   &__overlay {
@@ -49,6 +62,7 @@
     background-image:
       vars.$gradient-banner-fade,
       vars.$gradient-banner-vignette;
+    opacity: 0.55;
   }
 
   .container {

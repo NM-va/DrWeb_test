@@ -139,11 +139,14 @@ $form-focus-ring:           $green;
 // ============================================
 // 7. ГРАДИЕНТЫ (баннер)
 // ============================================
+// Псевдослой под mix-blend-mode: hue на фоне баннера
+$banner-hue-overlay-bg: rgb(58 77 2 / 81%);
+
 $gradient-glow: radial-gradient(
   ellipse 85% 70% at 50% 36%,
-  green-rgb-22 0%,
-  green-rgb-6 42%,
-  transparent 68%
+  $green-rgb-22 0%,
+  $green-rgb-6 42%,
+  $transparent 68%
 );
 
 $gradient-banner-fade: linear-gradient(
@@ -154,7 +157,7 @@ $gradient-banner-fade: linear-gradient(
 
 $gradient-banner-vignette: radial-gradient(
   57.86% 58.15% at 50% 50%,
-  $gray-1000 31.95%,
+  $black-rgb-60 31.95%,
   $transparent 100%
 );
 
