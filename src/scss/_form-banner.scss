@@ -6,8 +6,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: vars.$form-gap-stack;
-  margin-top: vars.$space-40;
+  margin-top: vars.$space-24;
   margin-inline: auto;
   padding: vars.$form-padding-y vars.$form-padding-x;
   border-radius: vars.$form-border-radius;
@@ -16,6 +15,7 @@
   text-align: left;
 
   @include mix.media-up-md {
+    margin-top: vars.$space-48;
     padding: vars.$form-padding-lg-y vars.$form-padding-lg-x;
     max-width: 568px;
   }
@@ -49,6 +49,8 @@
       flex-direction: row;
       align-items: flex-start;
       gap: vars.$space-12;
+      margin-top: vars.$space-16;
+      margin-bottom: vars.$space-32;
     }
 
     &--error .form-banner__label {
@@ -59,14 +61,14 @@
   &__label {
     font-size: vars.$font-size-sm;
     font-weight: 400;
-    line-height: vars.$body-line-height;
+    line-height: vars.$form-line-height;
     color: vars.$label-color;
   }
 
   &__input {
     box-sizing: border-box;
     min-height: vars.$input-min-height;
-    width: 100%;
+    width: 100%; 
     padding: vars.$input-padding-y vars.$input-padding-x;
     border: vars.$border-width solid vars.$input-border-color;
     border-radius: vars.$input-border-radius;
@@ -122,9 +124,9 @@
   }
 
   &__note {
-    margin: 0;
-    font-size: vars.$caption-font-size;
-    line-height: vars.$caption-line-height;
+    margin: vars.$space-32 0 0;
+    font-size: vars.$font-size-sm;
+    line-height: vars.$line-height-xs;
     color: vars.$form-required-color;
   }
 
@@ -192,7 +194,6 @@
     color: vars.$form-submit-color;
     font-family: vars.$font-family-base;
     font-size: vars.$font-size-btn-md;
-    font-weight: vars.$font-weight-medium;
     line-height: vars.$line-height-btn-md;
     cursor: not-allowed;
     transition:

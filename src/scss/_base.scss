@@ -1,4 +1,5 @@
 @use "./variables" as vars;
+@use "./mixins" as mix;
 @import "../../node_modules/modern-normalize/modern-normalize.css";
 
 * {
@@ -63,7 +64,15 @@ a {
 .container {
   margin-inline: auto;
   max-width: vars.$container-max-width;
-  padding-inline: vars.$container-padding-x;
+  padding-inline: vars.$container-padding-xs;
+
+  @include mix.media-up-md {
+    padding-inline: vars.$container-padding-md;
+  }
+
+  @include mix.media-up-xl {
+    padding-inline: vars.$container-padding-xl;
+  }
 }
 
 .accent {

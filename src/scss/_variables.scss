@@ -70,7 +70,7 @@ $body-color:                $gray-0;
 
 // Текст
 $text-emphasis:             $gray-0;           // заголовки, акцентный текст
-$text-muted:                $gray-500;         // secondary-icon / вторичный текст на тёмном     
+$text-muted:                $gray-350;         // secondary-icon / вторичный текст на тёмном     
 $text-accent:               $green-neon;
 
 // Иконки
@@ -220,8 +220,9 @@ $body-font-size:        1rem;           // 16px
 $body-line-height:      1.5;            // 24 / 16
 $body-font-weight:      $font-weight-regular;
 
-$body-line-height-sm:   1.25rem;           
-$body-line-height-md:   1.875rem;           
+$line-height-xs:   1.125rem;           
+$line-height-sm:   1.25rem;           
+$line-height-md:   1.875rem;           
 
 // caption · Roboto Regular · 12px / lh 18px / W400
 $caption-font-size:     0.75rem;        // 12px
@@ -309,8 +310,8 @@ $space-104:  map.get($spacers, 26);
 
 $btn-padding-y:     $space-8;
 $btn-padding-x:     $space-24;
-$input-padding-y:   $space-12;
-$input-padding-x:   $space-16;
+$input-padding-y:   0.625rem;
+$input-padding-x:   0.75rem;
 $card-padding-y:    $space-32;
 $card-padding-x:    $space-24;
 
@@ -319,7 +320,9 @@ $card-padding-x:    $space-24;
 // ============================================
 
 $container-max-width:   70rem;
-$container-padding-x:   1rem;
+$container-padding-xs:   1rem;
+$container-padding-md:   2rem;
+$container-padding-xl:   3.5rem;
 
 $border-width:          1px;
 $border-radius-sm:      5px;
@@ -333,13 +336,14 @@ $btn-height-lg:         48px;
 // ============================================
 // 14. ФОРМА — РАЗМЕРЫ И ОТСТУПЫ
 // ============================================
-$form-border-radius:        10px;
+$form-border-radius:        $border-radius-md;
+$form-line-height:          1;
 $form-padding-y:            $space-24;
 $form-padding-x:            $space-24;
 $form-padding-lg-y:         $space-48;
 $form-padding-lg-x:         $space-64;
 $form-gap-stack:            $space-24;
-$form-gap-fields:           $space-20;
+$form-gap-fields:           $space-16;
 $form-gap-label:            $space-8;
 $form-title-margin-bottom:  $space-16;
 
@@ -367,9 +371,9 @@ $modal-padding:             $space-24;
 $modal-padding-lg:          $space-64;
 $modal-gap:                 $space-16;
 $modal-title-size:          $h3-font-size;
-$modal-title-line-height:   $body-line-height-md;
+$modal-title-line-height:   $line-height-md;
 $modal-text-size:           $font-size-lg;
-$modal-text-line-height:    $body-line-height-sm;
+$modal-text-line-height:    $line-height-sm;
 $modal-action-height:       2.5rem; // 40px
 $modal-z-index:             50;
 

@@ -16,6 +16,11 @@
     <div class="wrapper">
       <main id="main-content">
         <section id="banner" class="banner-section" aria-label="Баннер">
+          <div class="banner-section__bg" aria-hidden="true">
+            <canvas class="banner-section__canvas" id="banner-matrix-canvas"></canvas>
+            <canvas class="banner-section__glow" id="banner-glow-canvas"></canvas>
+            <div class="banner-section__overlay"></div>
+          </div>
           <div class="container">
             <div class="content-banner">
               <div class="logo-banner">
@@ -34,14 +39,13 @@
                 <div class="content-banner__time">Время: 10:30</div>
               </div>
               <div class="content-banner__address">
-                <span class="accent">Bolshevik Loft</span>, Ленинградский проспект, 15, стр. 1 (БЦ «Большевик»), г. Москва
+                <span class="accent">Bolshevik Loft</span>, Ленинградский проспект, 15, стр. 1 <span class="content-banner__venue">(БЦ «Большевик»), г. Москва</span>
               </div>
               <a class="content-banner__download" href="#" download>
                 Программа мероприятия
                 <svg
-                  class="content-banner__download-icon"
-                  width="27"
-                  height="27"
+                  width="26"
+                  height="26"
                   aria-hidden="true"
                   focusable="false"
                 >
@@ -174,7 +178,140 @@
         </section>
       </main>
 
-      <footer class="site-footer" id="support"></footer>
+      <footer class="site-footer" id="support">
+        <div class="container">
+          <div class="site-footer__top">
+            <nav class="site-footer__nav" aria-label="Нижнее меню">
+              <ul class="site-footer__nav-list">
+                <li><a class="site-footer__nav-link" href="#">Для дома</a></li>
+                <li><a class="site-footer__nav-link" href="#">Поддержка</a></li>
+                <li><a class="site-footer__nav-link" href="#">Партнёрам</a></li>
+                <li><a class="site-footer__nav-link" href="#">Контакты</a></li>
+                <li><a class="site-footer__nav-link" href="#">Для бизнеса</a></li>
+                <li><a class="site-footer__nav-link" href="#">Пользователям</a></li>
+                <li><a class="site-footer__nav-link" href="#">О компании</a></li>
+                <li><a class="site-footer__nav-link" href="#">Вакансии</a></li>
+                <li class="site-footer__social-item--last">
+                  <ul class="site-footer__social" aria-label="Социальные сети">
+                    <li>
+                      <a class="site-footer__social-link" href="#" aria-label="Telegram">
+                        <svg
+                        width="24"
+                        height="24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <use href="#icon-tg"></use>
+                      </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="site-footer__social-link" href="#" aria-label="VK">
+                        <svg
+                          width="24"
+                          height="24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <use href="#icon-VK"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="site-footer__social-link" href="#" aria-label="Дзен">
+                        <svg
+                          width="24"
+                          height="24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <use href="#icon-Yandex_Zen"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="site-footer__social-link" href="#" aria-label="Блог">
+                        <svg
+                          width="24"
+                          height="24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <use href="#icon-habr"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="site-footer__social-link" href="#" aria-label="YouTube">
+                        <svg
+                          width="24"
+                          height="24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <use href="#icon-YouTube"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="site-footer__social-link" href="#" aria-label="Rutube">
+                        <svg
+                          width="24"
+                          height="24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <use href="#icon-rtb"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="site-footer__social-link" href="#" aria-label="Одноклассники">
+                        <svg
+                          width="24"
+                          height="24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <use href="#icon-ok"></use>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="site-footer__info">
+            <div class="site-footer__brand-line">
+              <span class="site-footer__logo" aria-hidden="true">
+                <svg width="40" height="40" focusable="false">
+                  <use href="#icon-logo-small"></use>
+                </svg>
+              </span>
+              <p class="site-footer__copyright">© «Доктор Веб» 2003–2026</p>
+            </div>
+            <p class="site-footer__about">
+              «Доктор Веб» — российский производитель антивирусных средств защиты информации под маркой Dr.Web.
+            </p>
+            <ul class="site-footer__legal">
+              <li>
+                <a class="site-footer__legal-link" href="#">Обработка персональных данных</a>
+              </li>
+              <li>
+                <a class="site-footer__legal-link" href="#">Безопасная разработка и выпуск обновлений</a>
+              </li>
+              <li>
+                <a class="site-footer__legal-link" href="#">Политика конфиденциальности</a>
+              </li>
+              <li>
+                <a class="site-footer__legal-link" href="#">Информация по требованиям Минцифры России</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <div class="modal" id="modal-error" hidden>

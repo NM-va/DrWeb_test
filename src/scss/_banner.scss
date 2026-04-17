@@ -3,9 +3,20 @@
 
 .banner-section {
   position: relative;
-  padding-block: vars.$space-48 vars.$space-64;
+  padding-top: vars.$space-40;
+  padding-bottom: vars.$space-40;
   overflow: hidden;
   color: vars.$body-color;
+
+  @include mix.media-up-xs {
+    padding-top: vars.$space-48;
+    padding-bottom: vars.$space-48;
+  }
+
+  @include mix.media-up-md {
+    padding-top: vars.$space-64;
+    padding-bottom: vars.$space-64;
+  }
 
   &__bg {
     position: absolute;
@@ -113,6 +124,12 @@
     }
   }
 
+  &__venue {
+    @include mix.media-up-xs {
+      display: block;
+    }
+  }
+
   &__download {
     display: inline-flex;
     align-items: center;
@@ -181,7 +198,6 @@
   width: 100%;
   gap: vars.$space-24;
   margin-top: vars.$space-40;
-  margin-bottom: vars.$space-40;
   padding: vars.$card-banner-padding-y vars.$card-banner-padding-x;
   border-radius: vars.$card-banner-radius;
   background: vars.$card-banner-bg;
@@ -189,13 +205,12 @@
 
   @include mix.media-up-xs {
     margin-top: vars.$space-48;
-    margin-bottom: vars.$space-48;
   }
 
   @include mix.media-up-md {
     padding: vars.$space-32 vars.$space-48;
     max-width: 568px;
-    margin: vars.$space-64 auto;
+    margin: vars.$space-64 auto 0;
   }
 
   @include mix.media-up-xl {

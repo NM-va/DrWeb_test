@@ -1,0 +1,130 @@
+@use "./variables" as vars;
+@use "./mixins" as mix;
+
+.site-footer {
+  padding-block: vars.$space-40 vars.$space-32;
+  background-color: vars.$gray-870;
+  color: vars.$text-muted;
+  
+  &__top {
+    padding-bottom: vars.$space-32;
+  }
+
+  &__nav {
+    gap: vars.$space-8 vars.$space-24;
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: vars.$space-16;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include mix.media-up-md {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__nav-link {
+    font-size: vars.$font-size-lg;
+    line-height: vars.$body-line-height;
+
+    &:hover {
+      color: vars.$link-hover-color;
+    }
+  }
+
+  &__social-item--last {
+    width: 100%;
+
+    @include mix.media-up-md {
+      width: auto;
+    }
+  }
+
+  &__social {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    gap: vars.$space-12;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    svg {
+      display: block;
+      flex-shrink: 0;
+    }
+  }
+
+  &__info {
+    position: relative;
+    padding-top: vars.$space-32;
+    font-size: vars.$font-size-sm;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border: 1px solid vars.$border-color;
+    }
+  }
+
+  &__brand-line {
+    display: flex;
+    align-items: center;
+    gap: vars.$space-12;
+    margin-bottom: vars.$space-8;
+  }
+
+  &__logo {
+    flex-shrink: 0;
+  }
+
+  &__copyright {
+    margin: 0;
+  }
+
+  &__about {
+    margin: 0 0 vars.$space-12;
+    max-width: 42em;
+  }
+
+  &__legal {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$space-12;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__legal-link {
+    color: vars.$text-muted;
+
+    &:hover {
+      color: vars.$link-hover-color;
+    }
+
+    @include mix.media-up-md {
+      padding-block: vars.$space-48 vars.$space-40;
+    }
+  }
+}
+
