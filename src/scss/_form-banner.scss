@@ -109,7 +109,7 @@
   }
 
   &__email-alert {
-    margin: 0;
+    margin: vars.$space-32 0 0;
     padding: vars.$space-12 vars.$space-16;
     border: vars.$border-width solid vars.$form-email-alert-border;
     border-radius: vars.$input-border-radius;
